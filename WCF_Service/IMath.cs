@@ -9,9 +9,13 @@ namespace MathService
         [OperationContract]
         bool Prime(int value);
 
-        // Añadir la operación SumTuple
+        // Añadir la operacion SumTuple
         [OperationContract]
         Tuple SumTuple(Tuple tuple);
+
+        // Añadir la operacion SolveLinearSystem
+        [OperationContract]
+        double[] SolveLinearSystem(double[][] coefficients, double[] constants);
     }
 
     [DataContract]
