@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MathClientWpf
 {
@@ -42,11 +43,24 @@ namespace MathClientWpf
 
         private void BtnSumarTupla_Click(object sender, RoutedEventArgs e)
         {
-            // Crea la tupla de entrada. Aquí puedes ajustar los datos según necesites.
+            // Array de tipo String para almacenar los valores de entrada
+            String[] data;
+
+            //Se divide la entrada usando la coma como separador
+            data = TxtDatos.Text.Split(',');
+            double[] Data = new double[data.Length];
+
+            // Se recorre data para convertir cada elemento a double y almacenarlo en el array Data
+            for (int i = 0; i < data.Length; i++)
+            {
+                Data[i] = Convert.ToDouble(data[i]);
+            }
+
+            // Crea la tupla que se enviara al servicio
             var entrada = new MathService.Tuple
             {
-                Data = new double[] { 1.0, 2.0, 3.0 },
-                Name = TxtNombre.Text
+                Data = Data,
+                Name = ""
             };
 
             try
@@ -54,13 +68,12 @@ namespace MathClientWpf
                 // Instancia del cliente WCF
                 MathService.MathClient client = new MathService.MathClient();
 
-                // Invoca el servicio de forma asíncrona y espera el resultado
+                // Invoca el servicio y espera el resultado
                 MathService.Tuple resultado = client.SumTupleAsync(entrada).Result;
 
-                // Mostrar resultado en la etiqueta
+                // Mostrar resultado interfaz grafica
                 LblTuplaResultado.Content = $"Suma: {resultado.Data[0]}, Nombre: {resultado.Name}";
 
-                // Cierra el cliente para liberar recursos
                 client.Close();
             }
             catch (Exception ex)

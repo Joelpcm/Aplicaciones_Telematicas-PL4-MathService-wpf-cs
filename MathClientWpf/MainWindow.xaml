@@ -20,9 +20,6 @@
             <!-- Pestaña para la operación con tuplas -->
             <TabItem Header="Suma de Tupla">
                 <StackPanel Margin="10">
-                    <Label Content="Nombre de la tupla:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <TextBox Name="TxtNombre" HorizontalAlignment="Left" Width="200" Height="30" Margin="0,0,0,10"/>
-
                     <Label Content="Datos de la tupla (separados por coma):" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <TextBox Name="TxtDatos" HorizontalAlignment="Left" Width="200" Height="30" Margin="0,0,0,10"/>
 

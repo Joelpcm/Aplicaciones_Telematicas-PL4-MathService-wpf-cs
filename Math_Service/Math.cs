@@ -11,10 +11,15 @@ namespace MathService
     {
         public bool Prime(int value)
         {
+            // Si el valor es menor o igual a 1 no es primo 
             if (value <= 1) return false;
+
+            // Recorre los numeros desde 2 hasta la raiz cuadrada del numero (si es mas alto no es divisible)
             for (int i = 2; i <= System.Math.Sqrt(value); i++)
             {
-                if (value % i == 0) return false;
+                //Si el valor es divisible por cualquier numero entre 2 y su raiz cuadrada tampoco es primo
+                if (value % i == 0) 
+                    return false;
             }
             return true;
         }
@@ -28,22 +33,27 @@ namespace MathService
             return new Tuple
             {
                 Data = new double[] { suma },
-                Name = tuple.Name
+                Name = "Suma de " + string.Join(", ", tuple.Data)
             };
         }
 
         public double[] SolveLinearSystem(LinearSystem system)
         {
-            double[][] coefficients = system.Coefficients;
-            double[] constants = system.Constants;
-            int rows = coefficients.Length;
-            int cols = coefficients[0].Length;
-            double[,] matrix = new double[rows, cols];
+            double[][] coefficients = system.Coefficients; // Matriz de coeficientes (A)
+            double[] constants = system.Constants; // Vector de constantes (b)
 
+            int rows = coefficients.Length; // Numero de filas (A)
+            int columns = coefficients[0].Length; // Numero de columnas (A)
+
+            // Crear una matriz de coeficientes
+            double[,] matrix = new double[rows, columns];
+
+            // Rellenar la matriz con los valores de los coeficientes
             for (int i = 0; i < rows; i++)
-                for (int j = 0; j < cols; j++)
+                for (int j = 0; j < columns; j++)
                     matrix[i, j] = coefficients[i][j];
 
+            //Descomposicion LU de la matriz de coeficientes . Mas info en:https://learn.microsoft.com/es-es/archive/msdn-magazine/2012/december/csharp-matrix-decomposition
             var lu = new Accord.Math.Decompositions.LuDecomposition(matrix);
             return lu.Solve(constants);
         }
