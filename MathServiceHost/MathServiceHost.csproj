@@ -51,7 +51,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WCF_Service\MathService.csproj">
+    <ProjectReference Include="..\Math_Service\MathService.csproj">
       <Project>{46f1682f-6518-488f-845a-edfcd3e841f5}</Project>
       <Name>MathService</Name>
     </ProjectReference>
