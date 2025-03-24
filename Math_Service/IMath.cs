@@ -6,6 +6,7 @@ namespace MathService
     [ServiceContract]
     public interface IMath
     {
+        // Esto añade la operacion Prime
         [OperationContract]
         bool Prime(int value);
 
@@ -13,11 +14,12 @@ namespace MathService
         [OperationContract]
         Tuple SumTuple(Tuple tuple);
 
-        // Añadir la operacion SolveLinearSystem
+        // Añade la operacion SolveLinearSystem
         [OperationContract]
         double[] SolveLinearSystem(LinearSystem system);
     }
 
+    // Contrato de datos para las tuplas
     [DataContract]
     public class Tuple
     {
@@ -39,6 +41,7 @@ namespace MathService
         }
     }
 
+    // Contrato de datos para los sistemas de ecuaciones lineales
     [DataContract]
     public class LinearSystem
     {
