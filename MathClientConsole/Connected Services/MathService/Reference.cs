@@ -74,6 +74,99 @@ namespace MathClientConsole.MathService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LinearSystem", Namespace="http://schemas.datacontract.org/2004/07/MathService")]
+    [System.SerializableAttribute()]
+    public partial class LinearSystem : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double[][] CoefficientsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double[] ConstantsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double[][] _coefficientsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double[] _constantsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double[][] Coefficients {
+            get {
+                return this.CoefficientsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CoefficientsField, value) != true)) {
+                    this.CoefficientsField = value;
+                    this.RaisePropertyChanged("Coefficients");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double[] Constants {
+            get {
+                return this.ConstantsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ConstantsField, value) != true)) {
+                    this.ConstantsField = value;
+                    this.RaisePropertyChanged("Constants");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double[][] _coefficients {
+            get {
+                return this._coefficientsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._coefficientsField, value) != true)) {
+                    this._coefficientsField = value;
+                    this.RaisePropertyChanged("_coefficients");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double[] _constants {
+            get {
+                return this._constantsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._constantsField, value) != true)) {
+                    this._constantsField = value;
+                    this.RaisePropertyChanged("_constants");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MathService.IMath")]
     public interface IMath {
@@ -91,10 +184,10 @@ namespace MathClientConsole.MathService {
         System.Threading.Tasks.Task<MathClientConsole.MathService.Tuple> SumTupleAsync(MathClientConsole.MathService.Tuple tuple);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMath/SolveLinearSystem", ReplyAction="http://tempuri.org/IMath/SolveLinearSystemResponse")]
-        double[] SolveLinearSystem(double[][] coefficients, double[] constants);
+        double[] SolveLinearSystem(MathClientConsole.MathService.LinearSystem system);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMath/SolveLinearSystem", ReplyAction="http://tempuri.org/IMath/SolveLinearSystemResponse")]
-        System.Threading.Tasks.Task<double[]> SolveLinearSystemAsync(double[][] coefficients, double[] constants);
+        System.Threading.Tasks.Task<double[]> SolveLinearSystemAsync(MathClientConsole.MathService.LinearSystem system);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -140,12 +233,12 @@ namespace MathClientConsole.MathService {
             return base.Channel.SumTupleAsync(tuple);
         }
         
-        public double[] SolveLinearSystem(double[][] coefficients, double[] constants) {
-            return base.Channel.SolveLinearSystem(coefficients, constants);
+        public double[] SolveLinearSystem(MathClientConsole.MathService.LinearSystem system) {
+            return base.Channel.SolveLinearSystem(system);
         }
         
-        public System.Threading.Tasks.Task<double[]> SolveLinearSystemAsync(double[][] coefficients, double[] constants) {
-            return base.Channel.SolveLinearSystemAsync(coefficients, constants);
+        public System.Threading.Tasks.Task<double[]> SolveLinearSystemAsync(MathClientConsole.MathService.LinearSystem system) {
+            return base.Channel.SolveLinearSystemAsync(system);
         }
     }
 }

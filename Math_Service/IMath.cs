@@ -15,7 +15,7 @@ namespace MathService
 
         // Añadir la operacion SolveLinearSystem
         [OperationContract]
-        double[] SolveLinearSystem(double[][] coefficients, double[] constants);
+        double[] SolveLinearSystem(LinearSystem system);
     }
 
     [DataContract]
@@ -36,6 +36,27 @@ namespace MathService
         {
             get { return _name; }
             set { _name = value; }
+        }
+    }
+
+    [DataContract]
+    public class LinearSystem
+    {
+        public double[][] _coefficients;
+        public double[] _constants;
+
+        [DataMember]
+        public double[][] Coefficients 
+        {
+            get { return _coefficients; }
+            set {_coefficients = value; }
+        }
+
+        [DataMember]
+        public double[] Constants 
+        {
+            get { return _constants; }
+            set { _constants = value; }
         }
     }
 }

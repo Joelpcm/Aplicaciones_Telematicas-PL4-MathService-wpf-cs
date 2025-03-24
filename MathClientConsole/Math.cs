@@ -63,6 +63,87 @@ namespace MathService
             }
         }
     }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LinearSystem", Namespace="http://schemas.datacontract.org/2004/07/MathService")]
+    public partial class LinearSystem : object, System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private double[][] CoefficientsField;
+        
+        private double[] ConstantsField;
+        
+        private double[][] _coefficientsField;
+        
+        private double[] _constantsField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
+                return this.extensionDataField;
+            }
+            set
+            {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double[][] Coefficients
+        {
+            get
+            {
+                return this.CoefficientsField;
+            }
+            set
+            {
+                this.CoefficientsField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double[] Constants
+        {
+            get
+            {
+                return this.ConstantsField;
+            }
+            set
+            {
+                this.ConstantsField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double[][] _coefficients
+        {
+            get
+            {
+                return this._coefficientsField;
+            }
+            set
+            {
+                this._coefficientsField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double[] _constants
+        {
+            get
+            {
+                return this._constantsField;
+            }
+            set
+            {
+                this._constantsField = value;
+            }
+        }
+    }
 }
 
 
@@ -82,6 +163,12 @@ public interface IMath
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMath/SumTuple", ReplyAction="http://tempuri.org/IMath/SumTupleResponse")]
     System.Threading.Tasks.Task<MathService.Tuple> SumTupleAsync(MathService.Tuple tuple);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMath/SolveLinearSystem", ReplyAction="http://tempuri.org/IMath/SolveLinearSystemResponse")]
+    double[] SolveLinearSystem(MathService.LinearSystem system);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMath/SolveLinearSystem", ReplyAction="http://tempuri.org/IMath/SolveLinearSystemResponse")]
+    System.Threading.Tasks.Task<double[]> SolveLinearSystemAsync(MathService.LinearSystem system);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -136,5 +223,15 @@ public partial class MathClient : System.ServiceModel.ClientBase<IMath>, IMath
     public System.Threading.Tasks.Task<MathService.Tuple> SumTupleAsync(MathService.Tuple tuple)
     {
         return base.Channel.SumTupleAsync(tuple);
+    }
+    
+    public double[] SolveLinearSystem(MathService.LinearSystem system)
+    {
+        return base.Channel.SolveLinearSystem(system);
+    }
+    
+    public System.Threading.Tasks.Task<double[]> SolveLinearSystemAsync(MathService.LinearSystem system)
+    {
+        return base.Channel.SolveLinearSystemAsync(system);
     }
 }

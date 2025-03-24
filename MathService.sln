@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35913.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathService", "WCF_Service\MathService.csproj", "{46F1682F-6518-488F-845A-EDFCD3E841F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathService", "Math_Service\MathService.csproj", "{46F1682F-6518-488F-845A-EDFCD3E841F5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathClientWpf", "MathClientWpf\MathClientWpf.csproj", "{4E8666EE-3436-42CB-BDAC-6017F9D17B15}"
 EndProject

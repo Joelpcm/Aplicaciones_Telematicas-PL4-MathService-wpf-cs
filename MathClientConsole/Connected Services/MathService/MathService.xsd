@@ -8,4 +8,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Tuple" nillable="true" type="tns:Tuple" />
+  <xs:complexType name="LinearSystem">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Coefficients" nillable="true" type="q2:ArrayOfArrayOfdouble" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Constants" nillable="true" type="q3:ArrayOfdouble" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="_coefficients" nillable="true" type="q4:ArrayOfArrayOfdouble" />
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="_constants" nillable="true" type="q5:ArrayOfdouble" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LinearSystem" nillable="true" type="tns:LinearSystem" />
 </xs:schema>
